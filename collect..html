@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Collect </title>
+</head>
+<body>
+  <div id="select" name="selectDiv">
+    <select name="select1" id="xxx">
+      <option value="1">option1</option>
+      <option value="2">option2</option>
+      <option value="3">option3</option>
+    </select>
+  </div>
+  <div id="inputType-1">
+    <input id="xx" type="text">
+  </div>
+  <div id="box" class="xxx">
+    <div class="c11"></div>
+    <div id="dd"></div>
+    <!-- 注释 -->
+    <div>
+      text
+      <p>1</p>
+      <p>2</p>
+    </div>
+  </div>
+
+  <script>
+    function cleanArray (actual) {
+      const newArray = []
+      for (let i = 0; i < actual.length; i++) {
+        if (actual[i]) {
+          newArray.push(actual[i])
+        }
+      }
+      return newArray
+    }
+    function param (json) {
+      if (!json) return ''
+      return cleanArray(
+        Object.keys(json).map((key) => {
+          if (json[key] === undefined) return ''
+          return `${encodeURIComponent(key)}=${encodeURIComponent(json[key])}`
+        })
+      ).join('&')
+    }
+    function getQueryObject (url) {
+      url = url == null ? window.location.href : url
+      const search = url.substring(url.lastIndexOf('?') + 1)
+      const obj = {}
+      const reg = /([^?&=]+)=([^?&=]*)/g
+      /**
+       *  reg 匹配url 参数名=参数值
+       *  rs 参数名 = 参数值
+       *  $1 参数名
+       *  $2 参数值
+      */
+      search.replace(reg, (rs, $1, $2) => {
+        console.log(rs, $1, $2)
+        const name = decodeURIComponent($1)
+        let val = decodeURIComponent($2)
+        val = String(val)
+        obj[name] = val
+        return rs
+      })
+      return obj
+    }
+    const box = document.getElementById('box')
+
+    document.body.addEventListener('click', function (e) {
+      const res =getLogData(e) 
+     console.log(res,'ClickRes')
+      console.log(decodeURI(res.xpath),'res.xpath')
+      
+    })
+  </script>
+  <script src="./getLogData//getBoundingClientRect.js"></script>
+  <script src="./getLogData/getXpath.js"></script>
+  <script src="./getLogData/getLogData.js"></script>
+  <script src="./test1.js"> </script>
+</body>
+</html>
