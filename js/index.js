@@ -6,7 +6,7 @@
 
   async parse解析 --> 遇到js，并行下载，---> 下载完，解析停，等待执行 ---> 执行完，继续解析
 
-* */ 
+* */
 
 /**
  * this 指向
@@ -17,7 +17,7 @@
  * 5. 箭头函数中根据外层上下文绑定 this 决定指向
  *    - new 操作符比 bind 优先级高
  *    - 箭头函数无法改变 this 指向
- * */ 
+ * */
 
 /**
  * 垃圾回收
@@ -30,7 +30,7 @@
  *    定期从 window 遍历各属性，能得到值就保留，得不到就清除
  *    从根节点往下遍历，只要找到就标记一下
  *    其他找不到的就清除
- * */ 
+ * */
 
 /**
  * jsBridge 
@@ -40,10 +40,10 @@
  * 1. 注册全局 API
  * 2. url.scheme
  *    通过自定义协议头，一般为 appname:// 拼接 url data
- * */ 
+ * */
 
 const sdk = {
-  invoke(url,data,onSucc, onError) {
+  invoke(url, data, onSucc, onError) {
     const iframe1 = document.createElement('iframe')
     iframe1.style.visibility = 'hidden'
     document.body.appendChild(iframe1)
@@ -76,7 +76,7 @@ const sdk = {
  *    vue -> 双端比较，4个指针想中间移动对比
  *    vue3 最长递增子序列
  *    还是2端向中间对比，通过对比最长递增子序列不动，其他的移动
- * */ 
+ * */
 
 /**
  * Retina 屏幕的 1px 像素如何实现
@@ -89,7 +89,7 @@ const sdk = {
  *    height:1px;
  *    transform: scaleY(.5)
  * }
- * */ 
+ * */
 
 
 /**
@@ -98,7 +98,7 @@ const sdk = {
  * 
  * felx:1 代表 flex-grow: 1 可放大, flex-shrink 可缩小， flex-basic:0%  初始化主轴可分配剩余空间最小可为0
  *  
- * */ 
+ * */
 
 
 /**
@@ -108,26 +108,26 @@ const sdk = {
  *  3. 服务端可以向客户端 set-cookie， cookie 大小限制 4kb
  *  4. 跨域传递，客户端和服务端需要设置 withCredentinal
  *  5. cookie 是 http 请求自动携带本域的 cookie, 默认浏览器储存
- * */ 
+ * */
 
 /**
  * ajax
- * */ 
+ * */
 
 function fetch(options) {
   const xhr = new XMLHttpRequest()
-  const {methods, onSuccess, onError, url, data} = options
+  const { methods, onSuccess, onError, url, data } = options
   const params = data
-  if(methods === 'GET') 
-  xhr.open('GET',`${url}?=${JSON.stringify(params)}`)
+  if (methods === 'GET')
+    xhr.open('GET', `${url}?=${JSON.stringify(params)}`)
   xhr.send(null)
-  if(methods === 'POST')
-  xhr.open('POST',url)
+  if (methods === 'POST')
+    xhr.open('POST', url)
   xhr.send
 
   xhr.onreadystatechange = function () {
-    if(xhr.readyState === 4) {
-      if(xhr.status === 200) {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
         onSuccess && onSuccess(xhr.responseText, xhr.responseXML)
       }
     }
@@ -150,7 +150,7 @@ function fetch(options) {
  *    - 遇到js 可能执行
  *    - 遇到 css, 图片加载，可能重新渲染
  * 
- * */ 
+ * */
 
 /**
  * 减少重排
@@ -161,7 +161,7 @@ function fetch(options) {
  *    display: felx / inline-block
  *    positon: absolute / fixed
  *  
- * */ 
+ * */
 
 
 /**
@@ -170,7 +170,7 @@ function fetch(options) {
  * window.iframe1.contentWindow.postMessage('message','*')
  * 
  * window.addEventListener('message', event => {})
- * */ 
+ * */
 
 /**
  * 首屏优化
@@ -178,7 +178,7 @@ function fetch(options) {
  * - 服务端渲染 ssr
  * - app 预取
  * - 图片懒加载
- * */ 
+ * */
 
 /**
  * 图片懒加载
@@ -190,27 +190,27 @@ function fetch(options) {
  *    4. img.src = data.dataset.src
  *    5. img.removeAttribute('data-src')
  *  3. throttle(()=>{loadImg} , 100)
- *  */ 
+ *  */
 
 /**
  * vue-router 的三种模式
  * hash #分割 onhashchange
  * webHistory  pushState popsatete  onpopsatatechange  
  * memoryHistory 路由无变化
- * */ 
+ * */
 
 /**
  * prefetch preload
  * - prefetch 资源在未来页面使用，空闲加载
  * - preload 资源在当前页使用，优先加载
- * */ 
+ * */
 
 
 /**
  * 节流，防抖
- * */ 
+ * */
 
-function debounce (fn, wait) {
+function debounce(fn, wait) {
   let timer = null
 
   return function () {
@@ -218,18 +218,18 @@ function debounce (fn, wait) {
     timer = setTimeout(() => {
       fn.apply(this, arguments)
     }, wait);
-    
+
   }
 }
 
 function throttle(fn, wait) {
   let timer = 0
   return function () {
-    if(timer) return
-    timer = setTimeout(()=>{
+    if (timer) return
+    timer = setTimeout(() => {
       fn.apply(this, arguments)
       timer = 0
-    }, wait)    
+    }, wait)
   }
 }
 
