@@ -7,7 +7,7 @@ const sliceText = (text = '') => {
   return text
 }
 
-function getQueryObject (url) {
+function getQueryObject(url) {
   url = url == null ? window.location.href : url
   const search = url.substring(url.lastIndexOf('?') + 1)
   const obj = {}
@@ -24,9 +24,9 @@ function getQueryObject (url) {
 
 _buildLogData = (eventData) => {
   const option = {
-    optParams:'',
-    platform:'',
-    sdk:'',
+    optParams: '',
+    platform: '',
+    sdk: '',
   }
   const { optParams, platform, sdk } = option
   const _data = {
