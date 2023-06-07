@@ -1,11 +1,12 @@
 <template>
-  <div id="app">app</div>
+  <div id="app"><Echar /></div>
 </template>
 
 <script>
+import Echar from './views/echarts/index.vue'
 export default {
   name: 'App',
-  components: {}
+  components: { Echar }
 }
 </script>
 
