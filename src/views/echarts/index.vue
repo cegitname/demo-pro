@@ -1,13 +1,13 @@
 <template>
   <div class="echarts-page-warpper">
-    <normalBar></normalBar>
+    <!-- <normalBar></normalBar> -->
   </div>
 </template>
 <script>
-import  normalBar from './components/normalBar'
+// import  normalBar from './components/normalBar'
 export default {
   components: {
-    normalBar
+    // normalBar
   },
   data() {
     return {
@@ -23,16 +23,6 @@ export default {
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-}
-.ss {
-  width: 100%;
-  height: 20px;
-}
-.red {
-  background: red;
-}
-.gray {
-  background: #ddd;
 }
 
 </style>
