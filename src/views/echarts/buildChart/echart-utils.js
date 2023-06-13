@@ -104,7 +104,7 @@ const grid = (opt = {}) => ({
   containLabel: true,
   ...opt
 })
-export default {
+export {
   useColor,
   splitLine,
   axisPointer,

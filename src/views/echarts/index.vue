@@ -1,19 +1,16 @@
 <template>
   <div class="echarts-page-warpper">
-    <EchartVue v-for="chart in chartArr" :key="chart.id" :elmId="chart.id"/>
+    <normalBar></normalBar>
   </div>
 </template>
 <script>
-import EchartVue from './buildChart/echart.vue'
-
-const chartArr = [
-  {id: 'normalBar' },
-]
+import  normalBar from './components/normalBar'
 export default {
-  components:{ EchartVue },
+  components: {
+    normalBar
+  },
   data() {
     return {
-      chartArr
     }
   },
   mounted() {
@@ -27,4 +24,15 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
+.ss {
+  width: 100%;
+  height: 20px;
+}
+.red {
+  background: red;
+}
+.gray {
+  background: #ddd;
+}
+
 </style>
